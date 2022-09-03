@@ -2,7 +2,7 @@ import React from "react";
 
 const Login = () => {
     return (
-        <div className="container">
+        <div className="container w-25">
             <h1 className="text-center my-4">Login</h1>
             <form>
                 <div class="form-outline mb-4">
@@ -42,7 +42,7 @@ const Login = () => {
                                 htmlFor="form2Example31"
                             >
                                 {" "}
-                                Remember me{" "}
+                                Remember me
                             </label>
                         </div>
                     </div>

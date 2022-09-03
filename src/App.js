@@ -1,14 +1,12 @@
 import "./App.css";
-import Homepage from "./components/Homepage";
+import Calendar from "./pages/Calendar";
 import Login from "./pages/Login";
-import Register from "./pages/Register";
+import UserHomePage from "./pages/UserHomePage";
 
 function App() {
-  return (
-    <>
-      <Register />
-    </>
-  );
+    return (
+        <UserHomePage />
+    );
 }
 
 export default App;
