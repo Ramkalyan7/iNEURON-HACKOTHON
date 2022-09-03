@@ -4,11 +4,9 @@ const UserHomePage = () => {
     return (
         <div>
             <h1>Hello, User</h1>
-            <form>
+            <form className="container w-50">
                 <div className="form-group">
-                    <label htmlFor="exampleFormControlInput1">
-                        Email address
-                    </label>
+                    <label htmlFor="exampleFormControlInput1">Title</label>
                     <input
                         type="email"
                         className="form-control"
@@ -17,9 +15,7 @@ const UserHomePage = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="exampleFormControlSelect1">
-                        Example select
-                    </label>
+                    <label htmlFor="exampleFormControlSelect1">Date</label>
                     <select
                         className="form-control"
                         id="exampleFormControlSelect1"
