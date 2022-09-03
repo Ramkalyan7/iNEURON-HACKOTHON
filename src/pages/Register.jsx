@@ -15,7 +15,7 @@ const Register = () => {
     const data = await axios.post("http://localhost:5000/register", formData);
     console.log(data);
     if (data) {
-      alert("login succesfull");
+      alert("registration succesfull");
     }
   };
 

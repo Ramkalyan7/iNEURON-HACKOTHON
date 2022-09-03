@@ -1,15 +1,14 @@
-import './App.css';
-import Homepage from './components/Homepage';
-import Register from './pages/Register';
+import "./App.css";
+import Homepage from "./components/Homepage";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
-    return (
-        <>
-            {/* //     <Homepage /> */}
-
-            <Register />
-
-        </>);
+  return (
+    <>
+      <Register />
+    </>
+  );
 }
 
 export default App;
