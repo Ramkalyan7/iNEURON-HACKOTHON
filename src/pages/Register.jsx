@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -9,23 +10,19 @@ const Register = () => {
   });
 
   const [password2, setPassword2] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (password2 !== formData.password) {
-      alert("passwords doesn't match");
+      alert("passwords are not matching");
     } else {
       const data = await axios.post("http://localhost:5000/register", formData);
       console.log(data);
       if (data) {
-        alert("registration succesfull");
+        navigate("/");
       }
-      setFormData({
-        username: "",
-        email: "",
-        password: "",
-      });
-      setPassword2("");
     }
   };
 
@@ -136,10 +133,26 @@ const Register = () => {
                           </div>
                         </div>
 
+                        <div className="form-check d-flex justify-content-center mb-5">
+                          <input
+                            className="form-check-input me-2"
+                            type="checkbox"
+                            value=""
+                            id="form2Example3c"
+                          />
+                          <label
+                            className="form-check-label"
+                            htmlFor="form2Example3"
+                          >
+                            I agree all statements in{" "}
+                            <a href="#!">Terms of service</a>
+                          </label>
+                        </div>
+
                         <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                           <button
                             type="submit"
-                            className="btn btn-primary btn-lg"
+                            className="btn btn-primary btn-lg bg-blue-900"
                           >
                             Register
                           </button>
