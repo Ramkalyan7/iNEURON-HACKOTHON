@@ -8,40 +8,25 @@ const UserHomePage = () => {
                 <div className="form-group">
                     <label htmlFor="exampleFormControlInput1">Title</label>
                     <input
-                        type="email"
+                        type="text"
                         className="form-control"
                         id="exampleFormControlInput1"
                         placeholder="name@example.com"
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="exampleFormControlSelect1">Date</label>
-                    <select
-                        className="form-control"
-                        id="exampleFormControlSelect1"
-                    >
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="exampleFormControlSelect2">
-                        Example multiple select
+                    <label htmlFor="exampleFormControlSelect1">
+                        Date: &nbsp;
                     </label>
-                    <select
-                        multiple
-                        className="form-control"
-                        id="exampleFormControlSelect2"
-                    >
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
+                    <input type="date" id="date" />
+                    <label htmlFor="exampleFormControlSelect2">
+                        Start Time: &nbsp;
+                        <input type="time" />
+                    </label>
+                    <label htmlFor="exampleFormControlSelect2">
+                        End Time: &nbsp;
+                    </label>
+                    <input type="time" />
                 </div>
                 <div className="form-group">
                     <label htmlFor="exampleFormControlTextarea1">
