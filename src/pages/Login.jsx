@@ -1,69 +1,97 @@
-import React from "react";
+import React, { useState } from "react";
+
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+    const [formData, setFormData] = useState({
+        username: "",
+        password: "",
+    });
+
+    const navigate = useNavigate();
+
+    const handleChange = (e) => {
+        setFormData((prev) => {
+            return { ...prev, [e.target.name]: e.target.value };
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const data = await axios.post("http://localhost:3000/login", formData);
+        console.log(data);
+        if (data) {
+            localStorage.setItem(
+                "username",
+                JSON.stringify(data.data.username)
+            );
+            localStorage.setItem("userId", JSON.stringify(data.data.userId));
+
+            navigate("/");
+        }
+    };
+
     return (
         <div className="container w-25">
             <h1 className="text-center my-4">Login</h1>
-            <form>
-                <div class="form-outline mb-4">
+            <form onSubmit={handleSubmit}>
+                <div className="form-outline mb-4">
                     <input
-                        type="email"
+                        type="text"
+                        required
                         id="form2Example1"
-                        class="form-control"
+                        className="form-control"
+                        value={formData.username}
+                        name="username"
+                        onChange={handleChange}
                     />
-                    <label class="form-label" htmlFor="form2Example1">
-                        Email address
+                    <label className="form-label" htmlFor="form2Example1">
+                        User Name
                     </label>
                 </div>
 
-                <div class="form-outline mb-4">
+                <div className="form-outline mb-4">
                     <input
                         type="password"
+                        required
                         id="form2Example2"
-                        class="form-control"
+                        className="form-control"
+                        value={formData.password}
+                        name="password"
+                        onChange={handleChange}
                     />
-                    <label class="form-label" htmlFor="form2Example2">
+                    <label className="form-label" htmlFor="form2Example2">
                         Password
                     </label>
                 </div>
 
-                <div class="row mb-4">
-                    <div class="col d-flex justify-content-center">
-                        <div class="form-check">
+                <div className="row mb-4">
+                    <div className="col d-flex justify-content-center">
+                        <div className="form-check">
                             <input
-                                class="form-check-input"
+                                className="form-check-input"
                                 type="checkbox"
                                 value=""
                                 id="form2Example31"
-                                checked
                             />
                             <label
-                                class="form-check-label"
+                                className="form-check-label"
                                 htmlFor="form2Example31"
                             >
                                 {" "}
-                                Remember me
+                                Remember me{" "}
                             </label>
                         </div>
-                    </div>
-
-                    <div class="col">
-                        <a href="#!">Forgot password?</a>
                     </div>
                 </div>
                 <div className="d-flex justify-content-center">
                     <button
-                        type="button"
-                        class="btn btn-primary btn-block mb-4 w-75"
+                        type="submit"
+                        className="btn btn-primary btn-block mb-4 w-75 bg-blue-900"
                     >
-                        Sign in
+                        Log In
                     </button>
-                </div>
-
-                <div class="text-center">
-                    <p>
-                        Not a member? <a href="#!">Register</a>
-                    </p>
                 </div>
             </form>
         </div>

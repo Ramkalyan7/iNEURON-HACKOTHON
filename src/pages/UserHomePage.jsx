@@ -8,25 +8,40 @@ const UserHomePage = () => {
                 <div className="form-group">
                     <label htmlFor="exampleFormControlInput1">Title</label>
                     <input
-                        type="text"
+                        type="email"
                         className="form-control"
                         id="exampleFormControlInput1"
                         placeholder="name@example.com"
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="exampleFormControlSelect1">
-                        Date: &nbsp;
-                    </label>
-                    <input type="date" id="date" />
+                    <label htmlFor="exampleFormControlSelect1">Date</label>
+                    <select
+                        className="form-control"
+                        id="exampleFormControlSelect1"
+                    >
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <div className="form-group">
                     <label htmlFor="exampleFormControlSelect2">
-                        Start Time: &nbsp;
-                        <input type="time" />
+                        Example multiple select
                     </label>
-                    <label htmlFor="exampleFormControlSelect2">
-                        End Time: &nbsp;
-                    </label>
-                    <input type="time" />
+                    <select
+                        multiple
+                        className="form-control"
+                        id="exampleFormControlSelect2"
+                    >
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
                 </div>
                 <div className="form-group">
                     <label htmlFor="exampleFormControlTextarea1">
