@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const RegisterMeet = () => {
   const { meetId } = useParams();
+  const [meet, setMeet] = useState({});
   const [formData, setFormData] = useState({
     meetId: meetId,
     username: JSON.parse(localStorage.getItem("username")),
@@ -27,12 +28,12 @@ const RegisterMeet = () => {
     e.preventDefault();
     console.log(formData);
     try {
-      const data = await axios.post(
+      const { data } = await axios.post(
         "http://localhost:5000/registermeet",
         formData
       );
       console.log(data);
-
+      setMeet(data);
       setFormData({
         meetId: meetId,
         username: JSON.parse(localStorage.getItem("username")),
@@ -74,15 +75,15 @@ const RegisterMeet = () => {
         .signIn()
         .then(() => {
           var event = {
-            summary: "Awesome Event!",
+            summary: meet.message,
             location: "800 Howard St., San Francisco, CA 94103",
             description: "Really great refreshments",
             start: {
-              dateTime: "2020-06-28T09:00:00-07:00",
+              Time: meet.startTime,
               timeZone: "America/Los_Angeles",
             },
             end: {
-              dateTime: "2020-06-28T17:00:00-07:00",
+              dateTime: meet.endTime,
               timeZone: "America/Los_Angeles",
             },
             recurrence: ["RRULE:FREQ=DAILY;COUNT=2"],
@@ -117,7 +118,7 @@ const RegisterMeet = () => {
           gapi.client.calendar.events
             .list({
               calendarId: "primary",
-              timeMin: new Date().toISOString(),
+              timeMin: meet.date.toISOString(),
               showDeleted: false,
               singleEvents: true,
               maxResults: 10,
